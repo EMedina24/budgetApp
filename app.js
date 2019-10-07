@@ -41,7 +41,7 @@ var data = {
         inc:0   
      },
      budget:0,
-     percentage:-1
+     percentage: -1
     
     };
 
@@ -77,8 +77,17 @@ var data = {
      calculateTotal('inc');
     
      data.budget = data.totals.inc - data.totals.exp;
-     data.percentage = (data.totals.exp / data.totals.inc)  * 100;
+     data.percentage = Math.round((data.totals.exp / data.totals.inc)  * 100);
 
+     },
+
+     getBudget:function () {
+       return{
+           budget:data.budget,
+           totalInc:data.totals.inc,
+           totalExp: data.totals.exp,
+           percentage:data.totals.percentage,
+       };
      },
      
      testing:function(){
@@ -191,16 +200,19 @@ var controller = (function(budgetCtrl, UICtrl){
 
   var updateBudget = function(){
    // calculate budget
-
+   budgetController.calculateBudget();
    // return the budget
+   var budget = budgetController.getBudget();
 
    // display budget in UI 
+console.log(budget);
+
   };
 
    var ctrlAddItem = function(){
    var input, newItem;
    // 1. get filed input data
-    input = UICtrl.getInput();
+    input = uiController.getInput();
      if(input.description !== "" && !isNaN(input.value)&& input.value > 0){
 
      
@@ -209,11 +221,11 @@ var controller = (function(budgetCtrl, UICtrl){
 
 
     // 2. add the item to the budget controller
-     newItem =  budgetCtrl.addItem(input.type, input.description, input.value);
+     newItem =  budgetController.addItem(input.type, input.description, input.value);
      // 3. add item to UIs
-     UICtrl.addlistItem(newItem, input.type);
+     uiController.addlistItem(newItem, input.type);
      // 4. clear fields
-     UICtrl.clearFields();
+     uiController.clearFields();
 
      // 5. display the budget on the ui
       updateBudget();
