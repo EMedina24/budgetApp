@@ -22,19 +22,26 @@ var calculateTotal = function(type){
  var sum = 0;
  data.allItems[type].forEach(function(cur){
   sum = sum + cur.value;
+
  });
   
+data.totals[type]=sum;
+
+};
+
 var data = {
 
     allItems:{
         exp:[],
-        inc:[],   
+        inc:[]  
     },
 
     totals: {
         exp:0,
-        inc:0,    
-     }   
+        inc:0   
+     },
+     budget:0,
+     percentage:-1
     
     };
 
@@ -66,10 +73,13 @@ var data = {
      
      calculateBudget: function(){
       
+     calculateTotal('exp');
+     calculateTotal('inc');
+    
+     data.budget = data.totals.inc - data.totals.exp;
+     data.percentage = (data.totals.exp / data.totals.inc)  * 100;
 
-
-
-     }
+     },
      
      testing:function(){
          console.log(data);
