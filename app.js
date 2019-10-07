@@ -130,35 +130,19 @@ expensesContainer: '.expenses__list',
           fieldsArr.forEach(function(current, index, array){
            current.value ="";
           });
+
+         fieldsArr[0].focus();
+
         },
-
-
-
 
            getDOMstrings: function(){
                return DOMstrings;
                                }
 
-
-
-
     
-                                      };
+         };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                             }) ();
+   }) ();
 /////////////////// END  UI controller /////////////////////////////////////
 
 
