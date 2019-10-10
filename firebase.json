@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site" : "edgardobudgetapp",
     "public": "budgetApp",
     "ignore": [
       "firebase.json",
