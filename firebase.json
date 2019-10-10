@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "budgetApp",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
